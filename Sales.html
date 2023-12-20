@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тарифные планы</title>
+<link rel="stylesheet" href="Style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="StyleSales.css">
+</head>
+<body>
+<!-- Навигационная панель Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="Images/Logo.png" style="width: 30px;" alt="Логотип"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Главная <span class="sr-only">(текущая)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Products.html">Запчасти</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contacts.html">Контакты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Submit.html">Оставить отзыв</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Sales.html">Таблица скидок</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<!-- Таблица с тарифами -->
+<table>
+  <!-- Шапка таблицы -->
+  <thead>
+    <tr>
+    <th style="background-color: #ffffff;"></th>
+      <th class="cell">Не первый раз</th>
+      <th class="cell">Новенький</th>
+      <th class="cell">Постоянный</th>
+      <th class="cell">Премиальный</th>
+      <!-- И так далее для каждого столбца -->
+    </tr>
+  </thead>
+  <!-- Тело таблицы -->
+  <tbody>
+    <tr>
+      <td class="left-color">На кузовные детали</td>
+      <td>1 %</td>
+      <td>5 %</td>
+      <td>10 %</td>
+      <td>25 $</td>
+      <!-- И так далее для каждой ячейки -->
+    </tr>
+    <!-- Другие строки с тарифами -->
+    <tr>
+        <td class="left-color">На детали салона</td>
+        <td>1 %</td>
+        <td>3 %</td>
+        <td>7 %</td>
+        <td>10 %</td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+      <tr>
+        <td class="left-color">На колеса</td>
+        <td>250 Руб</td>
+        <td>800 Руб</td>
+        <td>1200 Руб</td>
+        <td>2000 Руб</td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+      <tr>
+        <td class="left-color">Двигатели и их составляющие</td>
+        <td>1 %</td>
+        <td>10 %</td>
+        <td>25 %</td>
+        <td>50 %</td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+      <tr>
+        <td class="left-color">Подвеска и трансмиссия</td>
+        <td>Нет</td>
+        <td>7 %</td>
+        <td>12 %</td>
+        <td>20 %</td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+      <tr>
+        <td class="left-color">Бесплатные сувениры</td>
+        <td>Нет</td>
+        <td>Нет</td>
+        <td><img src="Images/Access.png" alt="Галочка"></td>
+        <td><img src="Images/Access.png" alt="Галочка"></td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+      <tr>
+        <td style="background-color: white; color: black;">Общая сумма покупок в год</td>
+        <td class="price">100000 Руб</td>
+        <td class="price">250000 Руб</td>
+        <td class="price">500000 Руб</td>
+        <td class="price">1000000 Руб</td>
+        <!-- И так далее для каждой ячейки -->
+      </tr>
+  </tbody>
+</table>
+
+<label for="purchaseAmount">Введите сумму покупок в год:</label>
+  <input type="number" id="purchaseAmount" placeholder="Введите сумму" required>
+
+  <button onclick="calculateStatus()">Рассчитать</button>
+
+  <div id="result"></div>
+
+
+<!-- Подключаем скрипты Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function calculateStatus() {
+      // Получаем значение суммы покупок в год
+      let purchaseAmount = parseFloat(document.getElementById('purchaseAmount').value);
+
+      // Проверяем введенное значение
+      if (isNaN(purchaseAmount)) {
+        alert('Пожалуйста, введите корректное число.');
+        return;
+      }
+
+      // Определяем статус покупателя
+      var status = '';
+      if (purchaseAmount >= 100000 && purchaseAmount < 250000) {
+        status = 'Не первый раз';
+      } else if (purchaseAmount >= 250000 && purchaseAmount < 500000) {
+        status = 'Новенький';
+      } else if (purchaseAmount >= 500000 && purchaseAmount < 1000000) {
+        status = 'Постоянный';
+      } else if (purchaseAmount >= 1000000) {
+        status = 'Премиальный';
+      } else {
+        status = 'Не в кассу';
+      }
+
+      // Выводим результат
+      document.getElementById('result').textContent = 'Статус покупателя: ' + status;
+    }
+
+  </script>
+
+</body>
+</html>

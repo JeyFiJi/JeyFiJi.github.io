@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Магазин автозапчастей</title>
+  <!-- Подключаем стили Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="StyleProducts.css">
+</head>
+<body>
+
+  <!-- Навигационная панель Bootstrap -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="Images/Logo.png" style="width: 30px;" alt="Логотип"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Главная <span class="sr-only">(текущая)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Products.html">Запчасти</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contacts.html">Контакты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Submit.html">Оставить отзыв</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Sales.html">Таблица скидок</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Пример товаров -->
+    <div class="product">
+      <div class="product-info">
+        <h3>Бампер Volkswagen Polo Sedan</h3>
+        <p>Стильное и функциональное решение для вашего автомобиля. Изготовлен из высококачественных материалов, этот бампер сочетает в себе привлекательный дизайн и превосходную прочность. Он обеспечивает надежную защиту передней части вашего авто от повреждений, сохраняя его оригинальный вид.</p>
+        <p>Цена: 25000 Руб</p>
+        <button class="btn btn-success add-to-cart" data-name="Запчасть 1" data-price="25000.00">Добавить в корзину</button>
+      </div>
+      <div class="product-image">
+        <img src="Images/Bamper.jpg" alt="Бампер" style="width: 400px;">
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-info">
+        <h3>Руль Volkswagen Polo Sedan</h3>
+        <p>важная часть интерьера вашего автомобиля, которая не только обеспечивает управление, но и создает комфортное вождение. В нашем магазине автозапчастей мы предлагаем высококачественные рули, специально предназначенные для Volkswagen Polo Sedan</p>
+        <p>Цена: 10000 Руб</p>
+        <button class="btn btn-success add-to-cart" data-name="Запчасть 2" data-price="10000.00">Добавить в корзину</button>
+      </div>
+      <div class="product-image">
+        <img src="Images/Rul.jpg" alt="Руль" style="width: 300px;">
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-info">
+        <h3>Двигатель Volkswagen Polo Sedan</h3>
+        <p>Мощный и надежный двигатель – ключевая составляющая вашего автомобиля. В нашем магазине автозапчастей мы предлагаем высококачественные двигатели, специально подобранные для Volkswagen Polo Sedan</p>
+        <p>Цена: 500000 Руб</p>
+        <button class="btn btn-success add-to-cart" data-name="Запчасть 3" data-price="500000.00">Добавить в корзину</button>
+      </div>
+      <div class="product-image">
+        <img src="Images/Dvigatel.jpeg" alt="Двигатель" style="width: 400px;">
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-info">
+        <h3>Кресло Volkswagen Polo Sedan</h3>
+        <p>Обновите комфорт внутреннего пространства своего Volkswagen Polo Sedan с нашими стильными и удобными креслами. Изготовленные из высококачественных материалов, наши кресла обеспечивают поддержку и комфорт во время поездок. Доступные в различных дизайнах и оттенках, они позволяют вам добавить персональный стиль к интерьеру вашего автомобиля.</p>
+        <p>Цена: 12500 Руб</p>
+        <button class="btn btn-success add-to-cart" data-name="Запчасть 4" data-price="12500.00">Добавить в корзину</button>
+      </div>
+      <div class="product-image">
+        <img src="Images/Kreslo.jpg" alt="Кресло" style="width: 400px;">
+      </div>
+    </div>
+
+    <!-- Корзина -->
+    <div class="cart">
+      <h2>Корзина</h2>
+      <div id="cart-items"></div>
+      <p>Итого:<span id="total">0.00</span> Руб</p>
+      <form action="/submit-survey" method="get">
+        <button type="submit" class="btn btn-primary">Оплата</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Подключаем скрипты Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // JavaScript для управления корзиной
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalSpan = document.getElementById('total');
+      let cartItems = [];
+
+      // Добавление товара в корзину
+      function addToCart(name, price) {
+        const item = {
+          name: name,
+          price: parseFloat(price),
+        };
+
+        cartItems.push(item);
+        updateCart();
+      }
+
+      // Удаление товара из корзины
+      function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        updateCart();
+      }
+
+      // Обновление отображения корзины
+      function updateCart() {
+        cartItemsContainer.innerHTML = '';
+        let totalPrice = 0;
+
+        cartItems.forEach((item, index) => {
+          const cartItemDiv = document.createElement('div');
+          cartItemDiv.classList.add('cart-item');
+          cartItemDiv.innerHTML = `
+            <span>${item.name}</span>
+            <span>${item.price.toFixed(2)} Руб</span>
+            <button class="btn btn-danger remove-from-cart" data-index="${index}">Удалить</button>
+          `;
+          cartItemsContainer.appendChild(cartItemDiv);
+
+          totalPrice += item.price;
+        });
+
+        totalSpan.textContent = totalPrice.toFixed(2);
+      }
+
+      // Обработчик нажатия кнопки "Добавить в корзину"
+      document.body.addEventListener('click', function(event) {
+        if (event.target.classList.contains('add-to-cart')) {
+          const name = event.target.getAttribute('data-name');
+          const price = event.target.getAttribute('data-price');
+          addToCart(name, price);
+        }
+
+        if (event.target.classList.contains('remove-from-cart')) {
+          const index = parseInt(event.target.getAttribute('data-index'), 10);
+          removeFromCart(index);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

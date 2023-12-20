@@ -1,0 +1,54 @@
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+  }
+  .director-info {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row; /* Исходное направление: горизонтальное */
+  }
+
+  /* Стили для кнопок прокрутки */
+  .scroll-button {
+    position: fixed;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #scrollToTopButton {
+    top: 20px;
+    right: 20px;
+  }
+
+  #scrollToBottomButton {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .director-photo {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    border-radius: 8px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    object-fit: cover;
+  }
+
+  .text-width {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    .director-photo {
+        margin-bottom: 0; /* Убираем отступ снизу при вертикальном расположении */
+      }
+    .director-info {
+      flex-direction: column-reverse; /* Направление для экранов меньше 768px: вертикальное с обратным порядком элементов */
+    }
+  }
